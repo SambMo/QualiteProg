@@ -1,8 +1,6 @@
 #include "entity.h"
 
-struct Point{int x,y;}; //Temporaire, sera mis dans le "mainWindow"
-
-class fauve : public entity{
+class fauve : public DynamicEntity{
 public:
     virtual ~fauve() = default;
 };
@@ -13,6 +11,7 @@ public:
     lion(const Point& pos);
     void deplacement(const PointCardinal& posC) override;
     bool estVivant() override;
+    Point position() const override;
 private:
     Point d_pos;
     bool d_alive;
@@ -24,6 +23,7 @@ public:
     tigre(const Point& pos);
     void deplacement(const PointCardinal& posC) override;
     bool estVivant() override;
+    Point position() const override;
 private:
     Point d_pos;
     bool d_alive;

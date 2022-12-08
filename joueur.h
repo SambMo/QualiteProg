@@ -1,8 +1,6 @@
 #include "entity.h"
 
-struct Point{int x,y;}; //Temporaire, sera mis dans le "mainWindow"
-
-class joueur : public entity{
+class joueur : public DynamicEntity{
 public:
     virtual ~joueur() = default;
     virtual int lifetime() = 0;
@@ -16,6 +14,7 @@ public:
     void deplacement(const PointCardinal& posC) override;
     bool estVivant() override;
     int lifetime() override;
+    Point position() const override;
 private:
     Point d_pos;
     bool d_alive;
@@ -30,6 +29,7 @@ public:
     void deplacement(const PointCardinal& posC) override;
     bool estVivant() override;
     int lifetime() override;
+    Point position() const override;
 private:
     Point d_pos;
     bool d_alive;
