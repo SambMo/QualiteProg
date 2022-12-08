@@ -4,7 +4,7 @@ struct PointCardinal{bool haut,bas,gauche,droite;}; //Temporaire, sera mis dans 
 
 class Entity{
 public:
-    virtual ~DynamicEntity() = default;
+    virtual ~Entity() = default;
     virtual Point position() const = 0;
 }
 
