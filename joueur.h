@@ -3,21 +3,27 @@
 class joueur : public DynamicEntity{
 public:
     joueur(const Point& pos);
-    joueur(int x, int y);
-    int lifetime() const ;
-    void setDeath() ;
-    bool estVivant()const;
-    Point position() const ;
-
-
-private:
+    virtual ~joueur() = default;
+    int lifetime() const;
+    void setDeath();
+    bool estVivant() const override;
+    Point position() const override;
+protected:
     Point d_pos;
     bool d_alive;
-    bool d_modeExpert;
     int d_lifetime;
-
-
-
 };
 
+// Avance avec diagonales
+class joueurNormal : public joueur{
+public:
+    joueurNormal();
+    void deplacement(const AireDeJeu& AdJ, int valeur) override;
+}
 
+// Avance sans diagonales
+class joueurExpert : public joueur{
+public:
+    joueurExpert();
+    void deplacement(const AireDeJeu& AdJ, int valeur) override;
+};

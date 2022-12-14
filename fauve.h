@@ -3,28 +3,23 @@
 class fauve : public DynamicEntity{
 public:
     virtual ~fauve() = default;
+    Point position() const override;
+    bool estVivant() const override;
+protected:
+    Point d_pos;
+    bool d_alive;
 };
 
 // Avance sans diagonales
 class lion : public fauve{
 public:
-    lion(const Point& pos);
-    void deplacement(const PointCardinal& posC) override;
-    bool estVivant() override;
-    Point position() const override;
-private:
-    Point d_pos;
-    bool d_alive;
+    lion();
+    void deplacement(const AireDeJeu& AdJ) override;
 };
 
 // Avance avec diagonales
 class tigre : public fauve{
 public:
-    tigre(const Point& pos);
-    void deplacement(const PointCardinal& posC) override;
-    bool estVivant() override;
-    Point position() const override;
-private:
-    Point d_pos;
-    bool d_alive;
+    tigre();
+    void deplacement(const AireDeJeu& AdJ) override;
 };
